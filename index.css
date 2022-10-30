@@ -70,3 +70,7 @@
   margin-right: 10px;
   transition: all 0.2s ease-in;
 }
+
+.active {
+  background-color: var(--catalina-blue);
+}

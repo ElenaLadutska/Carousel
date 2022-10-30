@@ -15,19 +15,20 @@ for (let i = 0; i < images.children.length; i++) {
 for (let i = 0; i < pages.children.length; i++) {
   pagesArray.push(pages.children[i]);
 }
-pagesArray[startedIndex].style.background = 'var(--catalina-blue)';
+
+pagesArray[startedIndex].classList.add('active');
 
 leftArrow.addEventListener('click', function(){
   if (startedIndex <= 0) {
     startedIndex = startedIndex + 1;
   };
-
-  pagesArray[startedIndex].style.background = 'none';
+  
   imagesArray[startedIndex].style.display = 'none';
+  pagesArray[startedIndex].classList.remove('active');
 
   startedIndex = startedIndex - 1;
 
-  pagesArray[startedIndex].style.background = 'var(--catalina-blue)';
+  pagesArray[startedIndex].classList.add('active');
   imagesArray[startedIndex].style.display = 'flex';
 });
 
@@ -36,10 +37,11 @@ rightArrow.addEventListener('click', function(){
     startedIndex = startedIndex - 1;
   };
 
-  leftArrow.style.display = 'flex';
-
   imagesArray[startedIndex].style.display = 'none';
+  pagesArray[startedIndex].classList.remove('active');
+
   startedIndex = startedIndex + 1;
-  pagesArray[startedIndex].style.background = 'var(--catalina-blue)';
+
+  pagesArray[startedIndex].classList.add('active');
   imagesArray[startedIndex].style.display = 'flex';
 });
