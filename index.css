@@ -10,25 +10,32 @@
   --yarrow-white:#ffe0ff;
 }
 
+body {
+  background-color: var(--black);
+}
+
 .leftArrow, 
 .rightArrow {
   width: 30px;
   height: 30px;
   border-radius: 30%;
-  border: 2px solid var(--catalina-blue);
+  border: 3px solid var(--catalina-blue);
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--catalina-blue);
   cursor: pointer;
-  margin: 0 10px;
+  margin: 0 50px;
   font-size: 20px;
   font-weight: bolder;
-  transition: background 0.3s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .leftArrow:hover, 
 .rightArrow:hover {
+  width: 40px;
+  height: 40px;
+  margin: 0 45px;
   background-color: var(--catalina-blue);
   border-color: var(--catalina-blue);
   color: var(--white);
@@ -37,6 +44,7 @@
 .container {
   height: 95vh;
 }
+
 .container,
 .content {
   height: 70vh;
@@ -46,6 +54,17 @@
   flex-wrap: wrap;
 }
 
+.images {
+  transition: all 0.8s ease-in-out;
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.images:hover {
+  opacity: 100%;
+  transform: scale(1.3);
+}
+
 #second_img,
 #third_img, 
 #fourth_img,
@@ -53,6 +72,16 @@
 #sixth_img {
   display: none;
 }
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@keyframes fade {
+  from {opacity: 50%}
+  to {opacity: 100%}
+} 
 
 .pages {
   width: 100%;
@@ -68,7 +97,7 @@
   border-radius: 30%;
   border: 2px solid var(--catalina-blue);
   margin-right: 10px;
-  transition: all 0.2s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .active {
