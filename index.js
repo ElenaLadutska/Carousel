@@ -6,42 +6,41 @@ const pages = document.getElementsByClassName('pages')[0];
 const imagesArray = [];
 const pagesArray = [];
 
-let startedIndex = 0;
+let index = 0;
 
 for (let i = 0; i < images.children.length; i++) {
   imagesArray.push(images.children[i]);
-}
-
-for (let i = 0; i < pages.children.length; i++) {
   pagesArray.push(pages.children[i]);
-}
+};
 
-pagesArray[startedIndex].classList.add('active');
+pagesArray[index].classList.add('active');
 
-leftArrow.addEventListener('click', function(){
-  if (startedIndex <= 0) {
-    startedIndex = startedIndex + 1;
+const removeStylesOnClick = () => {
+  imagesArray[index].style.display = 'none';
+  pagesArray[index].classList.remove('active');
+};
+
+const addStylesByClick = () => {
+  pagesArray[index].classList.add('active');
+  imagesArray[index].style.display = 'flex';
+};
+
+rightArrow.addEventListener('click', function() {
+  if (index === imagesArray.length -1) {
+    index--;
   };
-  
-  imagesArray[startedIndex].style.display = 'none';
-  pagesArray[startedIndex].classList.remove('active');
 
-  startedIndex = startedIndex - 1;
-
-  pagesArray[startedIndex].classList.add('active');
-  imagesArray[startedIndex].style.display = 'flex';
+  removeStylesOnClick();
+  index++;
+  addStylesByClick();
 });
 
-rightArrow.addEventListener('click', function(){
-  if (startedIndex === imagesArray.length -1 ) {
-    startedIndex = startedIndex - 1;
+leftArrow.addEventListener('click', function() {
+  if (index <= 0) {
+    index++;
   };
 
-  imagesArray[startedIndex].style.display = 'none';
-  pagesArray[startedIndex].classList.remove('active');
-
-  startedIndex = startedIndex + 1;
-
-  pagesArray[startedIndex].classList.add('active');
-  imagesArray[startedIndex].style.display = 'flex';
+  removeStylesOnClick();
+  index--;
+  addStylesByClick();
 });
