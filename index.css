@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'pixelate';
-  src: url(./font/sf-pixelate-shaded-bold.ttf);
+  font-family: 'Raleway';
+  src: url(./font/Raleway-Bold.ttf);
 }
 
 :root {
@@ -11,47 +11,109 @@
 }
 
 body {
-  background-color: var(--black);
+  font-family: 'Raleway';
+  color: var(--catalina-blue);
+}
+
+@media screen and (max-width:800px){
+  .container {
+    display: block;
+  }
+
+  header {
+    font-size: 0.7em;
+  }
+  .content {
+    flex-wrap: nowrap;
+    margin: 1em 0;
+  }
+
+  .images img {
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .pages {
+    position: relative;
+    top: 0.5em;
+  }
+
+  .page {
+    width: 0.5em;
+    height: 0.5em;
+  }
+}
+
+@media screen and (min-width: 801px){
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  header {
+    font-size: 1.5em;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    width: 2.25em;
+    height: 2.25em;
+  }
+
+  .content {
+    margin: 2em 0;
+  }
+
+  .pages {
+    position: relative;
+    top: 2em;
+  }
+
+  .page {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 1em;
+  left: 2.5em;
 }
 
 .leftArrow, 
 .rightArrow {
-  width: 30px;
-  height: 30px;
-  border-radius: 30%;
-  border: 3px solid var(--catalina-blue);
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 30%;
   color: var(--catalina-blue);
   cursor: pointer;
-  margin: 0 50px;
-  font-size: 20px;
-  font-weight: bolder;
+  margin: 0 2.5em;
   transition: all 0.5s ease-in;
 }
 
-.leftArrow:hover, 
-.rightArrow:hover {
-  width: 40px;
-  height: 40px;
-  margin: 0 45px;
+.leftArrow:active, 
+.rightArrow:active {
   background-color: var(--catalina-blue);
   border-color: var(--catalina-blue);
   color: var(--white);
 }
 
-.container {
-  height: 95vh;
-}
-
-.container,
 .content {
-  height: 70vh;
+  width: 100%;
+  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .images {
@@ -62,15 +124,7 @@ body {
 
 .images:hover {
   opacity: 100%;
-  transform: scale(1.3);
-}
-
-#second_img,
-#third_img, 
-#fourth_img,
-#fifth_img,
-#sixth_img {
-  display: none;
+  transform: scale(1.1);
 }
 
 .fade {
@@ -92,12 +146,12 @@ body {
 
 .page {
   display: flex;
-  width: 10px;
-  height: 10px;
   border-radius: 30%;
   border: 2px solid var(--catalina-blue);
   margin-right: 10px;
   transition: all 0.5s ease-in;
+  cursor: pointer;
+  opacity: 50%;
 }
 
 .active {

@@ -1,46 +1,76 @@
-const images = document.getElementsByClassName('images')[0];
 const leftArrow = document.getElementsByClassName('leftArrow')[0];
 const rightArrow = document.getElementsByClassName('rightArrow')[0];
+const images = document.getElementsByClassName('images')[0];
 const pages = document.getElementsByClassName('pages')[0];
 
-const imagesArray = [];
-const pagesArray = [];
+const imgToShow = document.createElement('img');
 
+const COUNT = 9;
 let index = 0;
 
-for (let i = 0; i < images.children.length; i++) {
-  imagesArray.push(images.children[i]);
-  pagesArray.push(pages.children[i]);
+for (let i = 0; i < COUNT; i++) {
+  const page = document.createElement('div');
+  page.className = 'page';
+  page.id = i;
+  pages.appendChild(page);
 };
 
-pagesArray[index].classList.add('active');
+const page = document.getElementsByClassName('page');
 
-const removeStylesOnClick = () => {
-  imagesArray[index].style.display = 'none';
-  pagesArray[index].classList.remove('active');
+Array.from(page).forEach(item => item.addEventListener('click', () => {
+  removeStylesFromPage(index)
+  showActivePicAndPage(item.id);
+}));
+
+const showActivePicAndPage = (id = index) => {
+  imgToShow.src = `./assets/${id}.jpg`;
+  pages.children[id].classList.add('active');
+  images.appendChild(imgToShow);
+  index = id;
 };
 
-const addStylesByClick = () => {
-  pagesArray[index].classList.add('active');
-  imagesArray[index].style.display = 'flex';
+showActivePicAndPage();
+
+const removeStylesFromPage = () => {
+  pages.children[index].classList.remove('active');
 };
 
-rightArrow.addEventListener('click', function() {
-  if (index === imagesArray.length -1) {
-    index--;
-  };
 
-  removeStylesOnClick();
-  index++;
-  addStylesByClick();
-});
-
-leftArrow.addEventListener('click', function() {
-  if (index <= 0) {
+const showNextPicture = (id = index) => {
+  if (index === COUNT - 1) {
+    removeStylesFromPage();
+    index = 0;
+    showActivePicAndPage();
+  }
+  else {
+    removeStylesFromPage();
     index++;
-  };
+    showActivePicAndPage();
+  }
+};
 
-  removeStylesOnClick();
-  index--;
-  addStylesByClick();
+const showPreviousPicture = (id = index) => {
+  if (index <= 0) {
+    removeStylesFromPage();
+    index = COUNT -1;
+    showActivePicAndPage();
+  }
+  else {
+    removeStylesFromPage();
+    index--;
+    showActivePicAndPage();
+  }
+}
+
+rightArrow.addEventListener('click', showNextPicture);
+leftArrow.addEventListener('click', showPreviousPicture);
+
+window.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight') {
+    showNextPicture();
+  } 
+  else if (e.key === 'ArrowLeft') {
+    showPreviousPicture()
+  }
 });
+
