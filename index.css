@@ -1,0 +1,159 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url(./font/Raleway-Bold.ttf);
+}
+
+:root {
+  --black: #000;
+  --white: #fff;
+  --catalina-blue: #01317D;
+  --yarrow-white:#ffe0ff;
+}
+
+body {
+  font-family: 'Raleway';
+  color: var(--catalina-blue);
+}
+
+@media screen and (max-width:800px){
+  .container {
+    display: block;
+  }
+
+  header {
+    font-size: 0.7em;
+  }
+  .content {
+    flex-wrap: nowrap;
+    margin: 1em 0;
+  }
+
+  .images img {
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .pages {
+    position: relative;
+    top: 0.5em;
+  }
+
+  .page {
+    width: 0.5em;
+    height: 0.5em;
+  }
+}
+
+@media screen and (min-width: 801px){
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  header {
+    font-size: 1.5em;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    width: 2.25em;
+    height: 2.25em;
+  }
+
+  .content {
+    margin: 2em 0;
+  }
+
+  .pages {
+    position: relative;
+    top: 2em;
+  }
+
+  .page {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 1em;
+  left: 2.5em;
+}
+
+.leftArrow, 
+.rightArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30%;
+  color: var(--catalina-blue);
+  cursor: pointer;
+  margin: 0 2.5em;
+  transition: all 0.5s ease-in;
+}
+
+.leftArrow:active, 
+.rightArrow:active {
+  background-color: var(--catalina-blue);
+  border-color: var(--catalina-blue);
+  color: var(--white);
+}
+
+.content {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.images {
+  transition: all 0.8s ease-in-out;
+  opacity: 80%;
+  cursor: pointer;
+}
+
+.images:hover {
+  opacity: 100%;
+  transform: scale(1.1);
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@keyframes fade {
+  from {opacity: 50%}
+  to {opacity: 100%}
+} 
+
+.pages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+  display: flex;
+  border-radius: 30%;
+  border: 2px solid var(--catalina-blue);
+  margin-right: 10px;
+  transition: all 0.5s ease-in;
+  cursor: pointer;
+  opacity: 50%;
+}
+
+.active {
+  background-color: var(--catalina-blue);
+}
