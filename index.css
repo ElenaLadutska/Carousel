@@ -13,6 +13,7 @@
 body {
   font-family: 'Raleway';
   color: var(--catalina-blue);
+  margin: 0;
 }
 
 @media screen and (max-width:800px){
@@ -23,6 +24,7 @@ body {
   header {
     font-size: 0.7em;
   }
+
   .content {
     flex-wrap: nowrap;
     margin: 1em 0;
@@ -31,6 +33,7 @@ body {
   .images img {
     width: 100%;
     min-width: 200px;
+    
   }
 
   .leftArrow,
@@ -71,22 +74,25 @@ body {
     margin: 2em 0;
   }
 
+  .images img {
+    width: 474px;
+    height: 580px;
+  }
+
   .pages {
     position: relative;
     top: 2em;
   }
 
   .page {
-    width: 1em;
-    height: 1em;
+    width: 0.7em;
+    height: 0.7em;
   }
 }
 
 header {
   width: 100%;
-  position: fixed;
-  top: 1em;
-  left: 2.5em;
+  margin: 1em 2.5em ;
 }
 
 .leftArrow, 
@@ -102,15 +108,15 @@ header {
 }
 
 .leftArrow:active, 
-.rightArrow:active {
+.rightArrow:active,
+.leftArrow:hover, 
+.rightArrow:hover{
   background-color: var(--catalina-blue);
   border-color: var(--catalina-blue);
   color: var(--white);
 }
 
 .content {
-  width: 100%;
-  height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,7 +147,7 @@ header {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:end;
 }
 
 .page {
